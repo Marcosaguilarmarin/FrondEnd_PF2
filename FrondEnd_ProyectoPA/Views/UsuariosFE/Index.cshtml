@@ -1,0 +1,110 @@
+﻿@model IEnumerable<FrondEnd_ProyectoPA.Models.Usuarios>
+
+@{
+    ViewData["Title"] = "IndexAsync";
+}
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+<h1>Mantenimiento de Usuarios</h1>
+
+
+
+<div>
+    <div>
+        <p>
+            <a asp-action="CrearUsuario" asp-controller="UsuariosFE">Nuevo Usuario</a>
+        </p>
+        <table class="table table-dark table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>
+
+                        @Html.DisplayNameFor(model => model.IdUsuario)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NombreUsuario)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ApellidoUsuario)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdentificacionUsuario)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdLogueo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Contrasena)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdDireccionPais)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdDireccionProvincia)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Direccionotrassenasusuario)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CorreoUsuario)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TelefonoUsuario)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EstadoUsuario)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdUsuario)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NombreUsuario)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ApellidoUsuario)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdentificacionUsuario)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdLogueo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Contrasena)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdDireccionPais)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdDireccionProvincia)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Direccionotrassenasusuario)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CorreoUsuario)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TelefonoUsuario)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EstadoUsuario)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,96 @@
+﻿@model IEnumerable<FrondEnd_ProyectoPA.Models.Reservaciones>
+
+@{
+    ViewData["Title"] = "ConsultaReserva";
+}
+
+<h1>ConsultaReserva</h1>
+
+
+<p>
+    <a asp-action="Index" asp-controller="Reservaciones">Crear Reserva</a>
+</p>
+<table class="table table-dark table-striped table-sm">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdReservaciones)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodigoReservacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CantidadAdultos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidadninos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdClientes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdHabitacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaReservacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fechaestadiainicial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fechaestadiafinal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorEstadia)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdReservaciones)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodigoReservacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CantidadAdultos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidadninos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdClientes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdHabitacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaReservacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fechaestadiainicial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fechaestadiafinal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorEstadia)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
