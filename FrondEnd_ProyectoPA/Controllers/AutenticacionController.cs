@@ -19,70 +19,117 @@ namespace FrondEnd_ProyectoPA.Controllers
             return View();
         }
 
-        public async Task<IActionResult>CargarPerfiles()
+        public IActionResult AccesoDenegado()
         {
-            Conexiones objconexion = new Conexiones();
 
-            List<PerfilesXUsuario> lstPXU = await objconexion.ConsultarPXU(new PerfilesXUsuario { IdPerfilesUsuario = 0 });
-            return (IActionResult)lstPXU;
+            return View();
         }
 
-
-
         [HttpPost]
-        public async Task<IActionResult> IniciarSesionAsync(Usuarios _usuario)
+        public async Task<IActionResult> IniciarSesion(Usuarios _usuario)
         {
-            Conexiones objconexion = new Conexiones();
+            Usuarios objValidacion = _usuario.ValidarUsuariosSimulado();
 
-            List<Usuarios> lstresultados = await objconexion.Consultar(new Usuarios {IdLogueo = _usuario.IdLogueo });
-            
-
-            if (lstresultados != null)
+            if (objValidacion != null)
             {
+                var claims = new List<Claim>()
+                            {
+                                new Claim(ClaimTypes.Name, objValidacion.NombreUsuario),
+                                new Claim("Usuarios", objValidacion.NombreUsuario)
+                            };
 
-                
-                var rev = lstresultados.Find(x => x.IdLogueo.ToUpper().Trim().Equals(_usuario.IdLogueo.ToUpper().Trim())
-                                             && x.Contrasena.Trim().Equals(_usuario.Contrasena.Trim())
-                                             && x.EstadoUsuario == true);
+                foreach (Perfiles item in objValidacion.Perfiles)
+                    claims.Add(new Claim(ClaimTypes.Role, item.Codigo.ToString()));
 
+                var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-                if (rev != null)
-                {
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimIdentity));
 
-                    var claims = new List<Claim>()
-                    {
-                        new Claim(ClaimTypes.Name, rev.NombreUsuario),
-                        new Claim("Usuarios", rev.NombreUsuario)
-                    };
+                return RedirectToAction("Index", "Home");
+        }
 
-                    
+            return RedirectToAction("Index");
 
-                    foreach (Perfiles item in rev.Perfiles)
-                        claims.Add(new Claim(ClaimTypes.Role, item.IdPerfil.ToString()));
-
-                    var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
-                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimIdentity));
-
-                    return RedirectToAction("Index", "Home");
-                }
-                return RedirectToAction("Index", "Autenticacion");
-
-            }
-
-            return RedirectToAction("Index", "Autenticacion");
-
+            
+          
         }
 
         [HttpGet]
-
-        public async Task<IActionResult> CerrarSesiónAsync()
+        public async Task<IActionResult> CerrarSesion()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-
             return RedirectToAction("Index", "Autenticacion");
         }
 
+
+
+
+
+        /*
+                public async Task<IActionResult>CargarPerfiles()
+                {
+                    Conexiones objconexion = new Conexiones();
+
+                    List<PerfilesXUsuario> lstPXU = await objconexion.ConsultarPXU(new PerfilesXUsuario { IdPerfilesUsuario = 0 });
+                    return (IActionResult)lstPXU;
+                }
+
+
+
+                [HttpPost]
+                public async Task<IActionResult> IniciarSesionAsync(Usuarios _usuario)
+                {
+                    Conexiones objconexion = new Conexiones();
+
+                    List<Usuarios> lstresultados = await objconexion.Consultar(new Usuarios {IdLogueo = _usuario.IdLogueo });
+
+
+                    if (lstresultados != null)
+                    {
+
+
+                        var rev = lstresultados.Find(x => x.IdLogueo.ToUpper().Trim().Equals(_usuario.IdLogueo.ToUpper().Trim())
+                                                     && x.Contrasena.Trim().Equals(_usuario.Contrasena.Trim())
+                                                     && x.EstadoUsuario == true);
+
+
+                        if (rev != null)
+                        {
+
+                            var claims = new List<Claim>()
+                            {
+                                new Claim(ClaimTypes.Name, rev.NombreUsuario),
+                                new Claim("Usuarios", rev.NombreUsuario)
+                            };
+
+
+
+                            foreach (Perfiles item in rev.Perfiles)
+                                claims.Add(new Claim(ClaimTypes.Role, item.IdPerfil.ToString()));
+
+                            var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimIdentity));
+
+                            return RedirectToAction("Index", "Home");
+                        }
+                        return RedirectToAction("Index", "Autenticacion");
+
+                    }
+
+                    return RedirectToAction("Index", "Autenticacion");
+
+                }
+
+                [HttpGet]
+
+                public async Task<IActionResult> CerrarSesiónAsync()
+                {
+                    await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+                    return RedirectToAction("Index", "Autenticacion");
+                }
+        */
 
     }
 }

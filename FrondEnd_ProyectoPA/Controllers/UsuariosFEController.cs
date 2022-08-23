@@ -26,7 +26,7 @@ namespace FrondEnd_ProyectoPA.Controllers
             return View();
         }
 
-
+/*
         [HttpPost]
         public async Task<IActionResult> Guardar(IFormCollection colection)
         {
@@ -54,6 +54,6 @@ namespace FrondEnd_ProyectoPA.Controllers
             return RedirectToAction("Index", "UsuariosFE");
         }
 
-
+        */
     }
 }

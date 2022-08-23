@@ -102,11 +102,11 @@ namespace FrondEnd_ProyectoPA.ConexionesApis
         /// <summary>
         /// Metodo para listar nuevos choferes
         /// </summary>
-        /// <param name="P_Entidad">Entidad de tipo Modelo Usuarios</param>
-        /// <returns>Entidad lista de tipo modelo usuarios</returns>
-        public async Task<List<ModeloChofer>> ConsultarChofer(ModeloChofer P_Entidad)
+        /// <param name="P_Entidad">Entidad de tipo Modelo choferes</param>
+        /// <returns>Entidad lista de tipo modelo choferes</returns>
+        public async Task<List<Chofer>> ConsultarChofer(Chofer P_Entidad)
         {
-            List<ModeloChofer> lista = new List<ModeloChofer>();
+            List<Chofer> lista = new List<Chofer>();
 
             InicializarCliente();
             string urlConsultarChofer = "api/Seguridad/ConsultarChofer";
@@ -115,11 +115,174 @@ namespace FrondEnd_ProyectoPA.ConexionesApis
             if (resultado.IsSuccessStatusCode)
             {
                 var convertirAstring = await resultado.Content.ReadAsStringAsync();
-                lista = JsonConvert.DeserializeObject<List<ModeloChofer>>(convertirAstring);
+                lista = JsonConvert.DeserializeObject<List<Chofer>>(convertirAstring);
             }
 
             return lista;
         }
+
+        /// <summary>
+        /// Metodo para agregar nuevos choferes
+        /// </summary>
+        /// <param name="P_Entidad">Entidad de tipo Modelo chofer</param>
+        /// <returns>Respuesta de ejecución</returns>
+        public async Task<bool> AgregarChofer(Chofer P_Entidad)   
+        {
+            InicializarCliente();
+            string urlAgregarChofer = "api/Seguridad/AgregarChofer";
+            HttpResponseMessage resultado = await Cliente.PostAsJsonAsync(urlAgregarChofer, P_Entidad);
+            return resultado.IsSuccessStatusCode;
+        }
+
+        /// <summary>
+        /// Metodo para Modificar nuevos choferes
+        /// </summary>
+        /// <param name="P_Entidad">Entidad de tipo Modelo choferes</param>
+        /// <returns>Respuesta de ejecución</returns>
+        public async Task<bool> ModificarChofer(Chofer P_Entidad)
+        {
+            InicializarCliente();
+            string urlModificarChofer = "api/Seguridad/ModificarChofer";
+            HttpResponseMessage resultado = await Cliente.PostAsJsonAsync(urlModificarChofer, P_Entidad);
+            return resultado.IsSuccessStatusCode;
+        }
+
+        /// <summary>
+        /// Metodo para eliminar nuevos choferes
+        /// </summary>
+        /// <param name="P_Entidad">Entidad de tipo Modelo choferes</param>
+        /// <returns>Respuesta de ejecución</returns>
+        public async Task<bool> EliminarChofer(Chofer P_Entidad)
+        {
+            InicializarCliente();
+            string urlEliminarChofer = "api/Seguridad/EliminarChofer";
+            HttpResponseMessage resultado = await Cliente.PostAsJsonAsync(urlEliminarChofer, P_Entidad);
+            return resultado.IsSuccessStatusCode;
+        }
+        
+        /// <summary>
+        /// Metodo para listar nuevos Ruta
+        /// </summary>
+        /// <param name="P_Entidad">Entidad de tipo Modelo Ruta</param>
+        /// <returns>Entidad lista de tipo modelo choferes</returns>
+        public async Task<List<Ruta>> ConsultarRuta(Ruta P_Entidad)
+        {
+            List<Ruta> lista = new List<Ruta>();
+
+            InicializarCliente();
+            string urlConsultarRuta = "api/Seguridad/ConsultarRuta";
+            HttpResponseMessage resultado = await Cliente.GetAsync(urlConsultarRuta);
+
+            if (resultado.IsSuccessStatusCode)
+            {
+                var convertirAstring = await resultado.Content.ReadAsStringAsync();
+                lista = JsonConvert.DeserializeObject<List<Ruta>>(convertirAstring);
+            }
+
+            return lista;
+        }
+
+        /// <summary>
+        /// Metodo para agregar nuevos Ruta
+        /// </summary>
+        /// <param name="P_Entidad">Entidad de tipo Modelo Ruta</param>
+        /// <returns>Respuesta de ejecución</returns>
+        public async Task<bool> AgregarRuta(Ruta P_Entidad)
+        {
+            InicializarCliente();
+            string urlAgregarRuta = "api/Seguridad/AgregarRuta";
+            HttpResponseMessage resultado = await Cliente.PostAsJsonAsync(urlAgregarRuta, P_Entidad);
+            return resultado.IsSuccessStatusCode;
+        }
+
+        /// <summary>
+        /// Metodo para Modificar nuevos Ruta
+        /// </summary>
+        /// <param name="P_Entidad">Entidad de tipo Modelo Ruta</param>
+        /// <returns>Respuesta de ejecución</returns>
+        public async Task<bool> ModificarRuta(Ruta P_Entidad)
+        {
+            InicializarCliente();
+            string urlModificarRuta = "api/Seguridad/ModificarRuta";
+            HttpResponseMessage resultado = await Cliente.PostAsJsonAsync(urlModificarRuta, P_Entidad);
+            return resultado.IsSuccessStatusCode;
+        }
+
+        /// <summary>
+        /// Metodo para eliminar nuevos Ruta
+        /// </summary>
+        /// <param name="P_Entidad">Entidad de tipo Modelo Ruta</param>
+        /// <returns>Respuesta de ejecución</returns>
+        public async Task<bool> EliminarRuta(Ruta P_Entidad)
+        {
+            InicializarCliente();
+            string urlEliminarRuta = "api/Seguridad/EliminarRuta";
+            HttpResponseMessage resultado = await Cliente.PostAsJsonAsync(urlEliminarRuta, P_Entidad);
+            return resultado.IsSuccessStatusCode;
+        }
+
+
+        /// <summary>
+        /// Metodo para listar nuevos Ruta
+        /// </summary>
+        /// <param name="P_Entidad">Entidad de tipo Modelo Ruta</param>
+        /// <returns>Entidad lista de tipo modelo choferes</returns>
+        public async Task<List<Bus>> ConsultarBus(Bus P_Entidad)
+        {
+            List<Bus> lista = new List<Bus>();
+
+            InicializarCliente();
+            string urlConsultarBus = "api/Seguridad/ConsultarBus";
+            HttpResponseMessage resultado = await Cliente.GetAsync(urlConsultarBus);
+
+            if (resultado.IsSuccessStatusCode)
+            {
+                var convertirAstring = await resultado.Content.ReadAsStringAsync();
+                lista = JsonConvert.DeserializeObject<List<Bus>>(convertirAstring);
+            }
+
+            return lista;
+        }
+
+        /// <summary>
+        /// Metodo para agregar nuevos Ruta
+        /// </summary>
+        /// <param name="P_Entidad">Entidad de tipo Modelo Ruta</param>
+        /// <returns>Respuesta de ejecución</returns>
+        public async Task<bool> AgregarBus(Bus P_Entidad)
+        {
+            InicializarCliente();
+            string urlAgregarBus = "api/Seguridad/AgregarBus";
+            HttpResponseMessage resultado = await Cliente.PostAsJsonAsync(urlAgregarBus, P_Entidad);
+            return resultado.IsSuccessStatusCode;
+        }
+
+        /// <summary>
+        /// Metodo para Modificar nuevos Ruta
+        /// </summary>
+        /// <param name="P_Entidad">Entidad de tipo Modelo Ruta</param>
+        /// <returns>Respuesta de ejecución</returns>
+        public async Task<bool> ModificarBus(Bus P_Entidad)
+        {
+            InicializarCliente();
+            string urlModificarBus = "api/Seguridad/ModificarBus";
+            HttpResponseMessage resultado = await Cliente.PostAsJsonAsync(urlModificarBus, P_Entidad);
+            return resultado.IsSuccessStatusCode;
+        }
+
+        /// <summary>
+        /// Metodo para eliminar nuevos Ruta
+        /// </summary>
+        /// <param name="P_Entidad">Entidad de tipo Modelo Ruta</param>
+        /// <returns>Respuesta de ejecución</returns>
+        public async Task<bool> EliminarBus(Bus P_Entidad)
+        {
+            InicializarCliente();
+            string urlEliminarBus = "api/Seguridad/EliminarBus";
+            HttpResponseMessage resultado = await Cliente.PostAsJsonAsync(urlEliminarBus, P_Entidad);
+            return resultado.IsSuccessStatusCode;
+        }
+
 
 
         /// <summary>
@@ -158,14 +321,14 @@ namespace FrondEnd_ProyectoPA.ConexionesApis
             return lista;
         }
 
-
+        /*
 
         /// <summary>
         /// Metodo para agregar nuevas habitaciones
         /// </summary>
         /// <param name="P_Entidad">Entidad de tipo Modelo Habitaciones</param>
         /// <returns>Respuesta de ejecución</returns>
-        public async Task<bool> AgregarHabitacion(Habitaciones P_Entidad)
+        public async Task<bool> AgregarHabitacion(Ruta P_Entidad)
         {
             InicializarCliente();
             string urlAgregarHabitacion = "api/Seguridad/AgregarHabitacion";
@@ -179,9 +342,9 @@ namespace FrondEnd_ProyectoPA.ConexionesApis
         /// </summary>
         /// <param name="P_Entidad">Entidad de tipo modelo habitaciones</param>
         /// <returns>Lista con habitaciones</returns>
-        public async Task<List<Habitaciones>> ConsultarHabitacion(Habitaciones P_Entidad)
+        public async Task<List<Ruta>> ConsultarHabitacion(Ruta P_Entidad)
         {
-            List<Habitaciones> lista = new List<Habitaciones>();
+            List<Ruta> lista = new List<Ruta>();
 
             InicializarCliente();
             string urlConsultarHabitacion = "api/Seguridad/ConsultarHabitacion";
@@ -190,7 +353,7 @@ namespace FrondEnd_ProyectoPA.ConexionesApis
             if (resultado.IsSuccessStatusCode)
             {
                 var convertirAstring = await resultado.Content.ReadAsStringAsync();
-                lista = JsonConvert.DeserializeObject<List<Habitaciones>>(convertirAstring);
+                lista = JsonConvert.DeserializeObject<List<Ruta>>(convertirAstring);
             }
 
             return lista;
@@ -212,7 +375,7 @@ namespace FrondEnd_ProyectoPA.ConexionesApis
 
             return lista;
         }
-
+        */
 
         public async Task<bool> AgregarClientes(Clientes P_Entidad)
         {

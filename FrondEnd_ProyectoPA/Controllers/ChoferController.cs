@@ -18,10 +18,37 @@ namespace FrondEnd_ProyectoPA.Controllers
 
             Conexiones objconexion = new Conexiones();
 
-            List<ModeloChofer> lstresultados = await objconexion.ConsultarChofer(new ModeloChofer { Nombre = string.Empty });
+            List<Chofer> lstresultados = await objconexion.ConsultarChofer(new Chofer { NombreUsuario = string.Empty });
             return View(lstresultados);
 
         }
+
+        public IActionResult CrearChofer()
+        {
+            return View();
+        }
+
         
+
+        [HttpPost]
+        public async Task<IActionResult> GuardarChofer(IFormCollection colection)
+        {
+
+            Chofer usr = new Chofer
+            {
+
+                Id_Chofer = colection["Id_Chofer"].ToString(),    //Convert.ToInt32(colection["Id_Chofer"].ToString()),
+                NombreUsuario = colection["NombreUsuario"].ToString(),
+                Contrasena = colection["Contrasena"].ToString(),
+                CorreoUsuario = colection["CorreoUsuario"].ToString(),
+            };
+
+            Conexiones objconexion = new Conexiones();
+            await objconexion.AgregarChofer(usr);
+
+            return RedirectToAction("Index", "Chofer");
+        }
+
+
     }
 }

@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewData["Title"] = "Catalogos";
+}
+<div class="w3-container w3-blue  w3-text-black">
+    <h1>Catalogos</h1>
+</div>
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Seleccione
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" asp-controller="Chofer" asp-action="Index">Choferes</a>
+            <a class="dropdown-item" asp-controller="Ruta" asp-action="Index">Rutas</a>
+            <a class="dropdown-item" asp-controller="Bus" asp-action="Index">Buses</a>
+
+        </div>
+    </div>
+

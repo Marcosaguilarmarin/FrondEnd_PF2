@@ -9,14 +9,14 @@ using System.Diagnostics;
 
 namespace FrondEnd_ProyectoPA.Models
 {
-    public class ModeloChofer
+    public class Chofer
     {
         #region Propiedades
 
-        public int IdChofer { get; set; }
-        public string Nombre { get; set; }
-        public string CorreoElectronico { get; set; }
-        public string Clave { get; set; }
+        public string Id_Chofer { get; set; }
+        public string NombreUsuario { get; set; }
+        public string Contrasena { get; set; }
+        public string CorreoUsuario { get; set; }
 
 
 
@@ -24,12 +24,12 @@ namespace FrondEnd_ProyectoPA.Models
 
         #region Constructores
 
-        public ModeloChofer()
+        public Chofer()
         {
-            IdChofer = 0;
-            Nombre = string.Empty;
-            CorreoElectronico = string.Empty;
-            Clave = string.Empty;
+            Id_Chofer = string.Empty;
+            NombreUsuario = string.Empty;
+            Contrasena = string.Empty;
+            CorreoUsuario = string.Empty;
         }
 
         #endregion

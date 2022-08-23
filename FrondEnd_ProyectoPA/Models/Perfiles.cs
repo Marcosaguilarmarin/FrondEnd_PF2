@@ -9,23 +9,28 @@ namespace FrondEnd_ProyectoPA.Models
     {
 
 
+
         #region Propiedades
 
+        public int Codigo { get; set; }
+        public string Descripcion { get; set; }
+        public bool Activo { get; set; }
+
+        /*
         public int IdPerfil { get; set; }
         public string NombrePerfil { get; set; }
         public int CodigoPerfil { get; set; }
         public bool StatusPerfil { get; set; }
-
+        */
         #endregion
 
         #region Constructores
 
         public Perfiles()
         {
-            IdPerfil = 0;
-            NombrePerfil = string.Empty;
-            CodigoPerfil = 0;
-            StatusPerfil = true;
+            Codigo = 0;
+            Descripcion = string.Empty;
+            Activo = true;
         }
 
         #endregion

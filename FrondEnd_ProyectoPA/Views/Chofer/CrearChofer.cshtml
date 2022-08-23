@@ -1,0 +1,54 @@
+﻿@model FrondEnd_ProyectoPA.Models.Chofer
+
+@{
+    ViewData["Title"] = "Agregar Chofer - ";
+}
+<div class="w3-container w3-blue  w3-text-black">
+
+    <h4>Mantenimiento Choferes</h4>
+    <hr/>
+    <h1>Agregar Chofer</h1>
+</div>        
+    <div class="w3-container w3-light-grey w3-text-black">
+        <div class="row">
+           <div class="w3-container w3-light-grey w3-centered">
+                <form class="w3-container" asp-action="GuardarChofer" asp-controller="Chofer" method="post" >
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Id_Chofer" class="control-label">ID Chofer</label>
+                        <input class="w3-input form-control" asp-for="Id_Chofer"  />
+                        <span asp-validation-for="Id_Chofer" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NombreUsuario" class="control-label">Nombre Usuario</label>
+                        <input class="w3-input form-control" asp-for="NombreUsuario"  />
+                        <span asp-validation-for="NombreUsuario" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Contrasena" class="control-label">Contraseña</label>
+                        <input class="w3-input form-control" asp-for="Contrasena"  />
+                        <span asp-validation-for="Contrasena" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CorreoUsuario" class="control-label">Email</label>
+                        <input class="w3-input form-control" asp-for="CorreoUsuario"  />
+                        <span asp-validation-for="CorreoUsuario" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input class="w3-input btn btn-primary" type="submit" value="Guardar" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="w3-center w3-container">
+            <a class="w3-button w3-green btn btn-secondary" asp-action="Index">Regresar</a>
+        </div>
+        
+    </div>
+    <hr />
+
+
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }
