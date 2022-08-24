@@ -1,0 +1,64 @@
+﻿@model FrondEnd_ProyectoPA.Models.Bus
+
+@{
+    ViewData["Title"] = "Modificar Bus - ";
+}
+
+<div class="w3-container w3-blue  w3-text-black">
+
+    <h4>Mantenimiento Bus</h4>
+    <hr />
+    <h1>Modificar Bus</h1>
+</div>
+<div class="w3-container w3-light-grey w3-text-black">
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="ModificarBus">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Id_Bus" class="control-label">ID Bus</label>
+                    <input asp-for="Id_Bus" class="form-control w3-input" />
+                    <span asp-validation-for="Id_Bus" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Placa" class="control-label">Placa</label>
+                    <input asp-for="Placa" class="form-control w3-input" />
+                    <span asp-validation-for="Placa" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Marca" class="control-label">Marca</label>
+                    <input asp-for="Marca" class="form-control w3-input" />
+                    <span asp-validation-for="Marca" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Id_Estado" class="control-label">ID Estado</label>
+                    <input asp-for="Id_Estado" class="form-control w3-input" />
+                    <span asp-validation-for="Id_Estado" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Id_Ruta" class="control-label">ID Ruta</label>
+                    <input asp-for="Id_Ruta" class="form-control w3-input" />
+                    <span asp-validation-for="Id_Ruta" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Id_Chofer" class="control-label">ID Chofer</label>
+                    <input asp-for="Id_Chofer" class="form-control w3-input" />
+                    <span asp-validation-for="Id_Chofer" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Guardar" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="w3-center w3-container">
+        <a class="w3-button w3-green btn btn-secondary" asp-action="Index">Regresar</a>
+    </div>
+
+</div>
+<hr />
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

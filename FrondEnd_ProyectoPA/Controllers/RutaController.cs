@@ -12,6 +12,7 @@ namespace FrondEnd_ProyectoPA.Controllers
 {
     public class RutaController : Controller
     {
+        [Authorize(Roles = "4")]
         public async Task<IActionResult> Index()
         {
 
@@ -26,5 +27,75 @@ namespace FrondEnd_ProyectoPA.Controllers
         {
             return View();
         }
+
+        public IActionResult ModificarRuta()
+        {
+            return View();
+        }
+
+        public IActionResult EliminarRuta()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> GuardarRuta(IFormCollection colection)
+        {
+
+            Ruta usr = new Ruta
+            {
+
+                Id_Ruta = colection["Id_Chofer"].ToString(),    //Convert.ToInt32(colection["Id_Chofer"].ToString()),
+                Nombre = colection["NombreUsuario"].ToString(),
+                MontoEstimado = colection["Contrasena"].ToString(),
+                MontoRecibido = colection["CorreoUsuario"].ToString(),
+
+    };
+
+            Conexiones objconexion = new Conexiones();
+            await objconexion.AgregarRuta(usr);
+
+            return RedirectToAction("Index", "Ruta");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EliminarRuta(IFormCollection colection)
+        {
+
+            Ruta usr = new Ruta
+            {
+
+                Id_Ruta = colection["Id_Chofer"].ToString(),    //Convert.ToInt32(colection["Id_Chofer"].ToString()),
+                Nombre = colection["NombreUsuario"].ToString(),
+                MontoEstimado = colection["Contrasena"].ToString(),
+                MontoRecibido = colection["CorreoUsuario"].ToString(),
+            };
+
+            Conexiones objconexion = new Conexiones();
+            await objconexion.EliminarRuta(usr);
+
+            return RedirectToAction("Index", "Ruta");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ModificarRuta(IFormCollection colection)
+        {
+
+            Ruta usr = new Ruta
+            {
+
+                Id_Ruta = colection["Id_Chofer"].ToString(),    //Convert.ToInt32(colection["Id_Chofer"].ToString()),
+                Nombre = colection["NombreUsuario"].ToString(),
+                MontoEstimado = colection["Contrasena"].ToString(),
+                MontoRecibido = colection["CorreoUsuario"].ToString(),
+            };
+
+            Conexiones objconexion = new Conexiones();
+            await objconexion.ModificarRuta(usr);
+
+            return RedirectToAction("Index", "Ruta");
+        }
+
     }
 }

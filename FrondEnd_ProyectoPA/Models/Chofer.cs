@@ -34,6 +34,21 @@ namespace FrondEnd_ProyectoPA.Models
 
         #endregion
 
+        /*
+        public List<Chofer> ConsultarChofer(Chofer P_entidad = null)
+        {
+            List<Chofer> lstresutados = new List<Chofer>();
+
+            if (P_entidad == null)
+            {
+                lstresutados = new List<Chofer>();
+
+            }
+
+            lstresutados = lstresutados.Where(x => x.NombreUsuario.Contains(P_entidad.NombreUsuario)).ToList();
+        }
+        */
+        
 
     }
 }

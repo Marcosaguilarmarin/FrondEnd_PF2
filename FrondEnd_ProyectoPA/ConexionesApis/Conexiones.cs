@@ -284,7 +284,7 @@ namespace FrondEnd_ProyectoPA.ConexionesApis
         }
 
 
-
+        /*
         /// <summary>
         /// Metodo para agregar nuevas reservaciones
         /// </summary>
@@ -375,7 +375,7 @@ namespace FrondEnd_ProyectoPA.ConexionesApis
 
             return lista;
         }
-        */
+        
 
         public async Task<bool> AgregarClientes(Clientes P_Entidad)
         {
@@ -402,7 +402,7 @@ namespace FrondEnd_ProyectoPA.ConexionesApis
             }
 
             return lista;
-        }
+        }*/
 
         #endregion
 

@@ -81,16 +81,19 @@ namespace FrondEnd_ProyectoPA.Models
                 new Usuarios{ NombreUsuario = "chofer", Contrasena= "chofer", Activo = true, Bloqueado = false,
                     Perfiles = new List<Perfiles>{
 
-                        new Perfiles { Codigo = 1, Descripcion = "Consultas", Activo = true},
+                        new Perfiles { Codigo = 2, Descripcion = "Catalogos", Activo = true},
+                        new Perfiles { Codigo = 4, Descripcion = "Rutas", Activo = true},
+                        new Perfiles { Codigo = 5, Descripcion = "Buses", Activo = true},
 
                      } },
-                new Usuarios{ NombreUsuario = "empleado", Contrasena= "empleado", Activo = true, Bloqueado = false,
+                new Usuarios{ NombreUsuario = "emple", Contrasena= "emple", Activo = true, Bloqueado = false,
                     Perfiles = new List<Perfiles>{
 
                         new Perfiles { Codigo = 2, Descripcion = "Catalogos", Activo = true},
                         new Perfiles { Codigo = 3, Descripcion = "Choferes", Activo = true},
                         new Perfiles { Codigo = 4, Descripcion = "Rutas", Activo = true},
                         new Perfiles { Codigo = 5, Descripcion = "Buses", Activo = true},
+
 
                      } },
 
